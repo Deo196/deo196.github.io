@@ -168,10 +168,6 @@ a:hover{
     margin:0;
 }
 
-#news .news-card{
-    justify-content: space-between;
-}
-
 #event img{
     margin-top: -16px;
     width: 105%;
@@ -315,7 +311,30 @@ footer img{
     }
 
   }
+
+  @media screen and (max-width:460px) {
+    #update .bg-card{
+        width:90%;
+
+    }
+    #update img{
+        width:70%;
+    }
+    
+}
+
   @media screen and (max-width:490px) {
+    
+    .video-outer{
+        width: 100%;
+    }
+
+
+    #event details{
+        width: 240px;
+    }
+  }
+  @media screen and (max-width:520px) {
     
     .video-outer{
         width: 100%;
@@ -331,12 +350,6 @@ footer img{
         text-align: center;
     }
     
-  }
-
-  @media screen and (max-width:810px) {
-    #news .news-card{
-        text-align: center;
-    }
   }
 
 
