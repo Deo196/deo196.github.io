@@ -21,6 +21,14 @@ a:hover{
 .text-green{
     color:#03b550;
 }
+.text-bold{
+    font-family: 'Exo 2', sans-serif;
+    color: #696969;
+}
+.text-grey{
+    color: #696969;
+}
+
 .video-outer{
     width: 400px;
     height: 300px;
@@ -94,20 +102,24 @@ a:hover{
   }
 
 .carousel-indicators button {
-    width: 30px!important;
-    height: 30px!important;
+    width: 20px!important;
+    height: 20px!important;
     border-radius: 50%;
 
   }
   
   .carousel-indicators .active {
-    width: 30px!important;
-    height: 30px!important;
+    width: 20px!important;
+    height: 20px!important;
     border-radius: 50%;
     border-top-right-radius: 0;
     transform: rotate(-45deg);
 
 }
+.h3,h3{
+    font-weight: 900;
+}
+
 #update .bg-card{
     background-color: #f5f5f5;
     border-radius: 45px;
@@ -299,12 +311,24 @@ footer img{
     }
 
   }
-  @media screen and (max-width:430px) {
+  @media screen and (max-width:490px) {
     
     .video-outer{
         width: 100%;
     }
+
+
+    #event details{
+        width: 100%;
+    }
   }
+  @media screen and (max-width:768px){
+    #investor .md-center{
+        text-align: center;
+    }
+    
+  }
+
 
 @media screen and (max-width:990px) {
 
