@@ -1,0 +1,337 @@
+﻿<krpano version="1.19" title="Virtual Tour">
+
+	<include url="skin/vtourskin.xml" />
+
+	<!-- customize skin settings: maps, gyro, webvr, thumbnails, tooltips, layout, design, ... -->
+	<skin_settings maps="false"
+	               maps_type="google"
+	               maps_bing_api_key=""
+	               maps_google_api_key=""
+	               maps_zoombuttons="false"
+	               gyro="true"
+	               webvr="true"
+	               webvr_gyro_keeplookingdirection="false"
+	               webvr_prev_next_hotspots="false"
+	               littleplanetintro="false"
+	               title="true"
+	               thumbs="true"
+	               thumbs_width="120" thumbs_height="80" thumbs_padding="10" thumbs_crop="0|40|240|160"
+	               thumbs_opened="false"
+	               thumbs_text="false"
+	               thumbs_dragging="true"
+	               thumbs_onhoverscrolling="false"
+	               thumbs_scrollbuttons="false"
+	               thumbs_scrollindicator="false"
+	               thumbs_loop="false"
+	               tooltips_buttons="false"
+	               tooltips_thumbs="false"
+	               tooltips_hotspots="false"
+	               tooltips_mapspots="false"
+	               deeplinking="false"
+	               loadscene_flags="MERGE"
+	               loadscene_blend="OPENBLEND(0.5, 0.0, 0.75, 0.05, linear)"
+	               loadscene_blend_prev="SLIDEBLEND(0.5, 180, 0.75, linear)"
+	               loadscene_blend_next="SLIDEBLEND(0.5,   0, 0.75, linear)"
+	               loadingtext="loading..."
+	               layout_width="0%"
+	               layout_maxwidth="814"
+	               controlbar_width="-24"
+	               controlbar_height="40"
+	               controlbar_offset="20"
+	               controlbar_offset_closed="-40"
+	               controlbar_overlap.no-fractionalscaling="10"
+	               controlbar_overlap.fractionalscaling="0"
+	               design_skin_images="vtourskin.png"
+	               design_bgcolor="0x2D3E50"
+	               design_bgalpha="0.8"
+	               design_bgborder="0"
+	               design_bgroundedge="1"
+	               design_bgshadow="0 4 10 0x000000 0.3"
+	               design_thumbborder_bgborder="3 0xFFFFFF 1.0"
+	               design_thumbborder_padding="2"
+	               design_thumbborder_bgroundedge="0"
+	               design_text_css="color:#FFFFFF; font-family:Arial;"
+	               design_text_shadow="1"
+	               />
+
+	<!--
+	    For an alternative skin design either change the <skin_settings> values 
+	    from above or optionally include one of the predefined designs from below.
+	-->
+	<!-- <include url="skin/vtourskin_design_flat_light.xml"  /> -->
+	<!-- <include url="skin/vtourskin_design_glass.xml"       /> -->
+	<!-- <include url="skin/vtourskin_design_ultra_light.xml" /> -->
+	<!-- <include url="skin/vtourskin_design_117.xml"         /> -->
+	<!-- <include url="skin/vtourskin_design_117round.xml"    /> -->
+	<!-- <include url="skin/vtourskin_design_black.xml"       /> -->
+
+
+	<!-- startup action - load the first scene -->
+	<action name="startup" autorun="onstart">
+		if(startscene === null OR !scene[get(startscene)], copy(startscene,scene[0].name); );
+		loadscene(get(startscene), null, MERGE);
+		if(startactions !== null, startactions() );
+		<!-- Hide Control Bar -->
+		skin_hideskin('instant');
+	</action>
+
+	<!-- G/F button image -->
+	<layer name="groundbtn" url="icon/G.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="10" y="30"
+	       scale="1" scalechildren="true"
+	       onclick="groundShowAllRoom(); firstFloorHideAllRoom(); secondFloorHideAllRoom();"
+		   onover=""
+		   onout=""
+	       />
+		<layer name="hidegroundbtn" url="icon/G.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="10" y="30"
+	       scale="1" visible="false" scalechildren="true"
+	       onclick="groundHideAllRoom(); firstFloorHideAllRoom(); secondFloorHideAllRoom();"
+		   onover=""
+		   onout=""
+	       />
+
+		   	<!-- G/F outer playground button image -->
+		<layer name="indoorPlayground" url="icon/IndoorPlayground.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="10" y="80"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		   		   	<!-- G/F inner playground button image -->
+		<layer name="outdoorPlayground" url="icon/OutdoorPlayground.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="180" y="80"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		   <layer name="g15" url="icon/G15.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="360" y="80"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		   <layer name="g17" url="icon/G16.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="540" y="80"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		   <layer name="g18" url="icon/G18.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="720" y="80"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		   <layer name="g19" url="icon/G19.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="900" y="80"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		   <layer name="g27" url="icon/G27.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="1080" y="80"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		   <layer name="g28" url="icon/G28.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="1260" y="80"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		   <layer name="g29" url="icon/G29.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="1440" y="80"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		   <layer name="g34" url="icon/G34.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="1620" y="80"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+
+		   <!-- Show All Room Function -->
+		   <action name="groundShowAllRoom">
+		   set(layer[groundbtn].visible,false);
+		   set(layer[hidegroundbtn].visible,true);
+
+		   <!--
+			tween(layer[groundbtn].scale,0);
+			tween(layer[hidegroundbtn].scale,1);
+			-->
+			tween(layer[indoorPlayground].scale,1);
+			tween(layer[outdoorPlayground].scale,1);
+			tween(layer[g15].scale,1);
+			tween(layer[g16].scale,1);
+			tween(layer[g17].scale,1);
+			tween(layer[g18].scale,1);
+			tween(layer[g19].scale,1);
+			tween(layer[g27].scale,1);
+			tween(layer[g28].scale,1);
+			tween(layer[g29].scale,1);
+			tween(layer[g34].scale,1);
+		   </action>
+			<!-- Hide All Room Function -->
+		   	<action name="groundHideAllRoom">
+			set(layer[groundbtn].visible,true);
+			set(layer[hidegroundbtn].visible,false);
+			<!--
+			tween(layer[groundbtn].scale,1);
+			tween(layer[hidegroundbtn].scale,0);
+			-->
+			tween(layer[indoorPlayground].scale,0);
+			tween(layer[outdoorPlayground].scale,0);
+			tween(layer[g15].scale,0);
+			tween(layer[g16].scale,0);
+			tween(layer[g17].scale,0);
+			tween(layer[g18].scale,0);
+			tween(layer[g19].scale,0);
+			tween(layer[g27].scale,0);
+			tween(layer[g28].scale,0);
+			tween(layer[g29].scale,0);
+			tween(layer[g34].scale,0);
+		   </action>
+
+
+
+		   	<!-- 1/F button image -->
+	<layer name="firstFloorbtn" url="icon/1F.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="180" y="30"
+	       scale="1" scalechildren="true"
+	       onclick="firstFloorShowAllRoom(); groundHideAllRoom(); secondFloorHideAllRoom();"
+		   onover=""
+	       />
+		   <layer name="hideFirstFloorbtn" url="icon/1F.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="180" y="30"
+	       scale="1" visible="false" scalechildren="true"
+	       onclick="firstFloorHideAllRoom(); groundHideAllRoom(); secondFloorHideAllRoom();"
+		   onover=""
+	       />
+
+
+		   	<layer name="rm113" url="icon/113.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="10" y="122"
+	       scale="0" scalechildren="true"
+	       onclick=""
+		   onover=""
+	       />
+		<layer name="rm114" url="icon/114.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="180" y="122"
+	       scale="0" scalechildren="true"
+	       onclick=""
+		   onover=""
+	       />
+		<layer name="rm127" url="icon/127.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="360" y="122"
+	       scale="0" scalechildren="true"
+	       onclick=""
+		   onover=""
+	       />
+			<!-- 1/F Show All Room Function -->
+		   <action name="firstFloorShowAllRoom">
+			set(layer[firstFloorbtn].visible,false);
+			set(layer[hideFirstFloorbtn].visible,true);
+
+			tween(layer[rm113].scale,1);
+			tween(layer[rm114].scale,1);
+			tween(layer[rm127].scale,1);
+		   </action>
+			<!-- 1/F Hide All Room Function -->
+		   	<action name="firstFloorHideAllRoom">
+			set(layer[firstFloorbtn].visible,true);
+			set(layer[hideFirstFloorbtn].visible,false);
+
+			tween(layer[rm113].scale,0);
+			tween(layer[rm114].scale,0);
+			tween(layer[rm127].scale,0);
+		   </action>
+
+
+
+		   	<!-- 2/F button image -->
+	<layer name="secondFloorbtn" url="icon/2F.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="360" y="30"
+	       scale="1" scalechildren="true"
+	       onclick="secondFloorShowAllRoom(); groundHideAllRoom(); firstFloorHideAllRoom();"
+		   onover=""
+	       />
+		<layer name="hideSecondFloorbtn" url="icon/2F.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="360" y="30"
+	       scale="1" visible="false" scalechildren="true"
+	       onclick="secondFloorHideAllRoom(); groundHideAllRoom(); firstFloorHideAllRoom();"
+		   onover=""
+	       />
+
+
+			<!--  button image -->
+		<layer name="rm202" url="icon/202.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="10" y="164"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		<layer name="rm217" url="icon/217.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="180" y="164"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		<layer name="rm218RestRoom" url="icon/218RestRoom.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="360" y="164"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		<layer name="rm218Bedroom" url="icon/218Bedroom.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="540" y="164"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+		<layer name="rm218Observatory" url="icon/218Observatory.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="720" y="164"
+	       scale="0" scalechildren="true"
+	       onclick=""
+	       />
+
+			<action name="secondFloorShowAllRoom">
+			set(layer[secondFloorbtn].visible,false);
+			set(layer[hideSecondFloorbtn].visible,true);
+
+
+			tween(layer[rm202].scale,1);
+			tween(layer[rm217].scale,1);
+			tween(layer[rm218RestRoom].scale,1);
+			tween(layer[rm218Bedroom].scale,1);
+			tween(layer[rm218Observatory].scale,1);
+		   </action>
+
+		   	<action name="secondFloorHideAllRoom">
+			set(layer[secondFloorbtn].visible,true);
+			set(layer[hideSecondFloorbtn].visible,false);
+
+			tween(layer[rm202].scale,0);
+			tween(layer[rm217].scale,0);
+			tween(layer[rm218RestRoom].scale,0);
+			tween(layer[rm218Bedroom].scale,0);
+			tween(layer[rm218Observatory].scale,0);
+		   </action>
+
+	<!-- Rooftop button image -->
+	<layer name="rooftopbtn" url="icon/rooftop.png" keep="true" handcursor="false" capture="false"
+	       align="leftbottom" x="540" y="30"
+	       scale="1" scalechildren="true"
+	       onclick="secondFloorHideAllRoom(); groundHideAllRoom(); firstFloorHideAllRoom();"
+		   onover=""
+	       />
+
+	
+	<scene name="scene_outSidePlayGround" title="outSidePlayGround" onstart="" thumburl="panos/outSidePlayGround.tiles/thumb.jpg" lat="22.30176300" lng="114.18930000" heading="0.0">
+
+		<view hlookat="0.0" vlookat="0.0" fovtype="MFOV" fov="120" maxpixelzoom="2.0" fovmin="70" fovmax="140" limitview="auto" />
+
+		<preview url="panos/outSidePlayGround.tiles/preview.jpg" />
+
+		<image type="CUBE" prealign="0|0.0|0" multires="true" tilesize="512">
+			<level tiledimagewidth="2048" tiledimageheight="2048">
+				<cube url="panos/outSidePlayGround.tiles/%s/l2/%v/l2_%s_%v_%h.jpg" />
+			</level>
+			<level tiledimagewidth="1024" tiledimageheight="1024">
+				<cube url="panos/outSidePlayGround.tiles/%s/l1/%v/l1_%s_%v_%h.jpg" />
+			</level>
+		</image>
+
+	</scene>
+
+
+</krpano>
